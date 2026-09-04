@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pubudu.dev - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #070d19;
+            color: #ffffff;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .page-container {
+            max-width: 1100px;
+            margin: 0 auto 50px auto;
+            background-color: #0b1326;
+            border: 1px solid #1e293b;
+            border-radius: 12px;
+            padding: 30px;
+        }
+
+        /* Header / Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-content: center;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #1e293b;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        .nav-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            gap: 20px;
+        }
+
+        .hero-text h1 {
+            font-size: 28px;
+            color: #38bdf8;
+        }
+
+        .hero-text h2 {
+            font-size: 18px;
+            color: #e2e8f0;
+            margin-bottom: 10px;
+        }
+
+        .hero-text p {
+            color: #94a3b8;
+            font-size: 13px;
+            max-width: 600px;
+            margin-bottom: 20px;
+        }
+
+        .btn-hire {
+            background-color: #0284c7;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+
+        .btn-hire:hover {
+            background-color: #0369a1;
+        }
+
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            min-width: 100px;
+            border-radius: 50%;
+            border: 3px solid #38bdf8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: bold;
+            color: #38bdf8;
+            background-color: #070d19;
+            overflow: hidden;
+        }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 18px;
+            border-left: 4px solid #38bdf8;
+            padding-left: 10px;
+            margin-bottom: 20px;
+            margin-top: 30px;
+        }
+
+        /* Qualifications Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: center;
+        }
+
+        .badge {
+            background-color: #0284c7;
+            color: white;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 12px;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .badge-orange {
+            background-color: #d97706;
+        }
+
+        .card h3 {
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-bottom: 20px;
+        }
+
+        .card-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            width: 100%;
+        }
+
+        .btn-card {
+            width: 100%;
+            padding: 8px 0;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: bold;
+            text-decoration: none;
+            box-sizing: border-box;
+            text-align: center;
+            display: block;
+            transition: opacity 0.3s;
+        }
+
+        .btn-card:hover {
+            opacity: 0.85;
+        }
+
+        .btn-dark {
+            background-color: #1e293b;
+            color: #38bdf8;
+            border: 1px solid #334155;
+        }
+
+        .btn-blue {
+            background-color: #0284c7;
+            color: white;
+            border: none;
+        }
+
+        /* Two Column Layout */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .skills-box, .projects-box {
+            background-color: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .skill-group h4 {
+            color: #38bdf8;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            background-color: #1e293b;
+            color: #cbd5e1;
+            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .links-list a {
+            display: inline-block;
+            color: #38bdf8;
+            text-decoration: none;
+            font-size: 13px;
+            margin-right: 15px;
+            margin-bottom: 10px;
+        }
+
+        .bullet-list {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        /* Footer / Contact */
+        .contact-section {
+            background-color: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+            font-size: 12px;
+            color: #94a3b8;
+        }
+
+        /* Showcase Pages Styles */
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .item-box {
+            background-color: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .item-box img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            background-color: #1e293b;
+        }
+
+        .item-box .code {
+            color: #38bdf8;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .item-box .label {
+            color: #94a3b8;
+            font-size: 11px;
+            margin-top: 3px;
+        }
+
+        .btn-back {
+            background-color: #1e293b;
+            color: #38bdf8;
+            padding: 6px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        /* Mobile Responsiveness Added */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            .hero-text p {
+                margin: 0 auto 20px auto;
+            }
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .nav-links a {
+                margin: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ================= PAGE 1: HOME ================= -->
+    <div class="page-container" id="home">
+        <nav>
+            <div class="logo">Pubudu.dev</div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#qualifications">Qualifications</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+
+        <div class="hero">
+            <div class="hero-text">
+                <p style="color: #94a3b8; font-size: 12px;">Hello, I'm</p>
+                <h1>J. M. P. B. Jayasinghe</h1>
+                <h2>Graphic Designer & Software / Web Developer</h2>
+                <p>Qualified in ICT, Software Development, Graphic Design, and AI Fundamentals. Passionate about building responsive web applications, robust network solutions, and engaging visual graphics.</p>
+                <a href="#contact" class="btn-hire">Hire Me</a>
+            </div>
+            <!-- Profile Avatar with Image support -->
+            <div class="profile-avatar">
+                <!-- <img src="images/profile.jpg" alt="Pubudu Jayasinghe"> -->
+                PB
+            </div>
+        </div>
+
+        <h2 class="section-title" id="qualifications">Qualifications & Education</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <div>
+                    <span class="badge">NVQ Level 3</span>
+                    <h3>Computer Applications Assistant</h3>
+                    <p>National Certificate covering MS Office, Database, Internet & Email.</p>
+                </div>
+                <div class="card-buttons">
+                    <a href="certs/nvq3.pdf" target="_blank" class="btn-card btn-dark">View Certificate</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <span class="badge">NVQ Level 4</span>
+                    <h3>Graphic Designer</h3>
+                    <p>National Certificate in Print, Web & Multimedia Design Concepts.</p>
+                </div>
+                <div class="card-buttons">
+                    <a href="certs/nvq4.pdf" target="_blank" class="btn-card btn-dark">View Certificate</a>
+                    <a href="#page2" class="btn-card btn-blue">&rarr; Level 4 Projects</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <span class="badge badge-orange">NVQ Level 5</span>
+                    <h3>Higher Diploma in ICT</h3>
+                    <p>Software Engineering, Databases, Web Programming & Networking.</p>
+                </div>
+                <div class="card-buttons">
+                    <a href="certs/nvq5-results.pdf" target="_blank" class="btn-card btn-dark">View Results</a>
+                    <a href="#page3" class="btn-card btn-blue">&rarr; Level 5 Projects</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <span class="badge">Certification</span>
+                    <h3>AI Fundamentals & Others</h3>
+                    <p>LEARN / Google / ADB certified in Artificial Intelligence concepts.</p>
+                </div>
+                <div class="card-buttons">
+                    <a href="certs/ai-cert.pdf" target="_blank" class="btn-card btn-dark">View Credentials</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="two-col" id="skills" style="margin-top: 30px;">
+            <div class="skills-box">
+                <h2 class="section-title" style="margin-top:0;">Technical Skills</h2>
+                <div class="skill-group">
+                    <h4>Graphic & UI Design</h4>
+                    <div class="tags">
+                        <span class="tag">Adobe Photoshop</span>
+                        <span class="tag">Adobe Illustrator</span>
+                        <span class="tag">CorelDraw</span>
+                        <span class="tag">UI/UX Layout</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h4>Software & Web Development</h4>
+                    <div class="tags">
+                        <span class="tag">Java</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">SQL / MySQL</span>
+                        <span class="tag">C#</span>
+                        <span class="tag">HTML5 / CSS3</span>
+                        <span class="tag">PHP</span>
+                        <span class="tag">Visual Studio</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h4>Networking & Systems</h4>
+                    <div class="tags">
+                        <span class="tag">Local Area Network (LAN)</span>
+                        <span class="tag">Cisco Packet Tracer</span>
+                        <span class="tag">Software Testing</span>
+                        <span class="tag">System Analysis & Design</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="projects-box">
+                <h2 class="section-title" style="margin-top:0;">Projects & Profiles</h2>
+                <p style="font-size: 12px; color: #94a3b8; margin-bottom: 10px;">Online Portfolio & Profiles</p>
+                <div class="links-list">
+                    <a href="https://linkedin.com" target="_blank">LinkedIn Profile</a>
+                    <a href="https://github.com" target="_blank">GitHub Repos</a>
+                </div>
+                <p style="font-size: 12px; color: #94a3b8; margin-top: 15px; margin-bottom: 5px;">Featured Projects</p>
+                <ul class="bullet-list">
+                    <li>Custom Web Application & Responsive Interfaces</li>
+                    <li>Enterprise Database Management System (SQL)</li>
+                    <li>Creative Branding, Product Labels & Digital Media</li>
+                </ul>
+                <div style="margin-top: 20px;">
+                    <a href="#page2" class="btn-card btn-blue" style="display:inline-block; width:auto; padding:6px 12px; margin-right:5px;">Level 4 Projects</a>
+                    <a href="#page3" class="btn-card btn-blue" style="display:inline-block; width:auto; padding:6px 12px;">Level 5 Projects &rarr;</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-section" id="contact">
+            <h2 class="section-title" style="margin-top:0; border:none; padding:0;">Get In Touch</h2>
+            <p style="color: #e2e8f0; font-weight: bold; font-size: 14px;">J. M. P. B. Jayasinghe</p>
+            <p style="margin-top: 5px;">Email: pubudujayasinghe0@gmail.com | Kurunegala, Sri Lanka</p>
+        </div>
+    </div>
+
+
+    <!-- ================= PAGE 2: LEVEL 4 PROJECTS ================= -->
+    <div class="page-container" id="page2">
+        <nav>
+            <div class="logo">Pubudu.dev</div>
+            <a href="#home" class="btn-back">Back to Home</a>
+        </nav>
+
+        <h2>Level 4 Projects Gallery</h2>
+        <p style="font-size: 12px; color: #94a3b8; margin-bottom: 20px;">Graphic Design Work Showcase (NVQ Level 4)</p>
+
+        <h4 style="color: #38bdf8; margin-bottom: 10px;">1. CV & Document Designs</h4>
+        <div class="showcase-grid">
+            <div class="item-box"><img src="images/cv1.jpg" alt="CV 01"><div class="code">CV 01</div><div class="label">Modern Resume</div></div>
+            <div class="item-box"><img src="images/cv2.jpg" alt="CV 02"><div class="code">CV 02</div><div class="label">Creative CV</div></div>
+            <div class="item-box"><img src="images/cv3.jpg" alt="CV 03"><div class="code">CV 03</div><div class="label">Professional Resume</div></div>
+            <div class="item-box"><img src="images/cv4.jpg" alt="CV 04"><div class="code">CV 04</div><div class="label">Minimalist CV</div></div>
+            <div class="item-box"><img src="images/cv5.jpg" alt="CV 05"><div class="code">CV 05</div><div class="label">Cover Letter</div></div>
+        </div>
+
+        <h4 style="color: #38bdf8; margin-bottom: 10px;">2. Banners & Promotional Designs</h4>
+        <div class="showcase-grid">
+            <div class="item-box"><img src="images/ban1.jpg" alt="BAN 01"><div class="code">BAN 01</div><div class="label">Web Banner</div></div>
+            <div class="item-box"><img src="images/ban2.jpg" alt="BAN 02"><div class="code">BAN 02</div><div class="label">Social Banner</div></div>
+            <div class="item-box"><img src="images/ban3.jpg" alt="BAN 03"><div class="code">BAN 03</div><div class="label">Print Flyer</div></div>
+            <div class="item-box"><img src="images/ban4.jpg" alt="BAN 04"><div class="code">BAN 04</div><div class="label">Event Poster</div></div>
+            <div class="item-box"><img src="images/ban5.jpg" alt="BAN 05"><div class="code">BAN 05</div><div class="label">Roll-up Banner</div></div>
+        </div>
+
+        <h4 style="color: #38bdf8; margin-bottom: 10px;">3. Business Cards & Product Labels</h4>
+        <div class="showcase-grid">
+            <div class="item-box"><img src="images/card1.jpg" alt="CARD 01"><div class="code">CARD 01</div><div class="label">Corporate Card</div></div>
+            <div class="item-box"><img src="images/card2.jpg" alt="CARD 02"><div class="code">CARD 02</div><div class="label">Modern Card</div></div>
+            <div class="item-box"><img src="images/label1.jpg" alt="LABEL 01"><div class="code">LABEL 01</div><div class="label">Product Label</div></div>
+            <div class="item-box"><img src="images/label2.jpg" alt="LABEL 02"><div class="code">LABEL 02</div><div class="label">Packaging Sticker</div></div>
+            <div class="item-box"><img src="images/other.jpg" alt="OTHER"><div class="code">OTHER</div><div class="label">Branding Mockup</div></div>
+        </div>
+    </div>
+
+
+    <!-- ================= PAGE 3: LEVEL 5 PROJECTS ================= -->
+    <div class="page-container" id="page3">
+        <nav>
+            <div class="logo">Pubudu.dev</div>
+            <a href="#home" class="btn-back">Back to Home</a>
+        </nav>
+
+        <h2>Level 5 Projects Showcase</h2>
+        <p style="font-size: 12px; color: #94a3b8; margin-bottom: 20px;">Higher Diploma in ICT & Software Engineering (NVQ Level 5)</p>
+
+        <h4 style="color: #38bdf8; margin-bottom: 10px;">1. Cisco Packet Tracer LAN Design Projects</h4>
+        <div class="showcase-grid">
+            <div class="item-box"><img src="images/lan1.jpg" alt="LAN 01"><div class="code">LAN 01</div><div class="label">Router Setup</div></div>
+            <div class="item-box"><img src="images/lan2.jpg" alt="LAN 02"><div class="code">LAN 02</div><div class="label">Switch Topology</div></div>
+            <div class="item-box"><img src="images/lan3.jpg" alt="LAN 03"><div class="code">LAN 03</div><div class="label">VLAN Config</div></div>
+            <div class="item-box"><img src="images/lan4.jpg" alt="LAN 04"><div class="code">LAN 04</div><div class="label">Subnetting</div></div>
+            <div class="item-box"><img src="images/lan5.jpg" alt="LAN 05"><div class="code">LAN 05</div><div class="label">Server Setup</div></div>
+        </div>
+
+        <h4 style="color: #38bdf8; margin-bottom: 10px;">2. Web Design & Development Projects</h4>
+        <div class="showcase-grid">
+            <div class="item-box"><img src="images/web1.jpg" alt="WEB 01"><div class="code">WEB 01</div><div class="label">E-Commerce</div></div>
+            <div class="item-box"><img src="images/web2.jpg" alt="WEB 02"><div class="code">WEB 02</div><div class="label">Portfolio Site</div></div>
+            <div class="item-box"><img src="images/web3.jpg" alt="WEB 03"><div class="code">WEB 03</div><div class="label">Student Portal</div></div>
+            <div class="item-box"><img src="images/web4.jpg" alt="WEB 04"><div class="code">WEB 04</div><div class="label">CSS Grid Dashboard</div></div>
+            <div class="item-box"><img src="images/web5.jpg" alt="WEB 05"><div class="code">WEB 05</div><div class="label">PHP Admin Panel</div></div>
+        </div>
+
+        <h4 style="color: #38bdf8; margin-bottom: 10px;">3. Software Programming & Systems Projects</h4>
+        <div class="showcase-grid">
+            <div class="item-box"><img src="images/prog1.jpg" alt="PROG 01"><div class="code">PROG 01</div><div class="label">Java POS App</div></div>
+            <div class="item-box"><img src="images/prog2.jpg" alt="PROG 02"><div class="code">PROG 02</div><div class="label">C# Desktop App</div></div>
+            <div class="item-box"><img src="images/prog3.jpg" alt="PROG 03"><div class="code">PROG 03</div><div class="label">SQL Database</div></div>
+            <div class="item-box"><img src="images/prog4.jpg" alt="PROG 04"><div class="code">PROG 04</div><div class="label">System Analysis</div></div>
+            <div class="item-box"><img src="images/prog5.jpg" alt="PROG 05"><div class="code">PROG 05</div><div class="label">Software Test</div></div>
+        </div>
+    </div>
+
+</body>
+</html>
